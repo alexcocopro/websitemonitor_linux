@@ -8,9 +8,9 @@ websites=(
 )
 
 log_file="caidas_websites.txt"
-website_status=() # Array asociativo para almacenar el estado de cada sitio
+declare -A website_status   # Declarar array asociativo correctamente
 
-# Inicializar el estado de los sitios como "arriba" al inicio
+# Inicializar el estado de los sitios como "up" al inicio
 for website in "${websites[@]}"; do
   website_status["$website"]="up"
 done
@@ -43,7 +43,7 @@ while true; do
       echo "[$status_code] $website sigue funcionando."
     fi
   done
-  sleep 1
+  sleep 60  # Cambié a 60 segundos para evitar saturar los sitios (ajusta según tu necesidad)
 done
 
-# hacerlo ejecutable con: chmod +x monitor_websites.sh
+# Hazlo ejecutable con: chmod +x monitor_websites.sh
