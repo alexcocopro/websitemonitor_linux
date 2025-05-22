@@ -1,0 +1,17 @@
+Pasos para solucionar el problemas de sintaxis de ips.txt
+Verifica el contenido de ips.txt
+
+Ejecuta en shell:
+
+cat -A ips.txt
+Esto mostrará caracteres especiales como retornos de carro (^M), espacios o tabulaciones que podrían estar causando problemas.
+
+Limpia el archivo de caracteres no deseados
+
+Si ves caracteres ^M (retorno de carro típico de archivos Windows), conviértelo a formato Unix con:
+
+dos2unix ips.txt
+
+Si no tienes dos2unix, instálalo o usa:
+
+sed -i 's/\r$//' ips.txt
